@@ -1,9 +1,13 @@
 package org.example;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.LinkedList;
 import java.util.Objects;
 
 
@@ -11,7 +15,7 @@ public class FileDialog extends JFrame {
 
     private String fileString = "";
 
-    List statements;
+    private LinkedList statements = new LinkedList();
     private JButton bDateioeffnen = new JButton();
     private JButton bStringwandeln = new JButton();
 
@@ -39,7 +43,7 @@ public class FileDialog extends JFrame {
             }
         });
 
-        bStringwandeln.setBounds(200, 25, 150, 50);;
+        bStringwandeln.setBounds(200, 25, 150, 50);
         bStringwandeln.setText("String wandeln");
         bStringwandeln.setMargin(new Insets(2, 2, 2, 2));
         bStringwandeln.addActionListener(new ActionListener() {
@@ -62,7 +66,7 @@ public class FileDialog extends JFrame {
         fd.setDirectory("C:\\");
         fd.setFile("*.txt");
         fd.setVisible(true);
-        String filename =  fd.getDirectory() + fd.getFile();
+        String filename = fd.getDirectory() + fd.getFile();
         if (filename == null)
             System.out.println("You cancelled the choice");
         else {
@@ -82,23 +86,82 @@ public class FileDialog extends JFrame {
             }
         }
     }
+
     public void bStringwandeln_ActionPerformed(ActionEvent evt) {
-        fileString = fileString.replace(" ", "");
-        String[] stringByLine = fileString.split("\\n");
-        System.out.print(fileString);
-        //for ( String line: stringByLine ) {
-        //    if (Objects.equals(line, stringByLine[0])) {
-        //        setDatabaseName(line);
-        //    } else {
-        //      setTableStructure(line);
-        //}
+        fileString = sanitize(fileString);
+        String[] fileStringCutByLine = fileString.split("\\n");
+        for (String line : fileStringCutByLine) {
+            if (Objects.equals(line, fileStringCutByLine[0])) {
+                setDatabaseName(line);
+                continue;
+            }
+            statements.add(setTableStructure(line));
+        }
+        System.out.println(statements);
     }
-    private void setDatabaseName(String databaseName ) {
-        statements.add("CREATE DATABASE IF EXISTS " + databaseName + ";", 0);
-        statements.add("USE DATABASE " + databaseName + ";", 1);
+
+    private void setDatabaseName(String databaseName) {
+        statements.add("CREATE DATABASE IF EXISTS " + databaseName + ";");
+        statements.add("USE DATABASE " + databaseName + ";");
+
     }
-    private void setTableStructure(String tableStatement) {
+
+    private String setTableStructure(String tableStatement) {
         String[] twoPartString = tableStatement.split("\\(");
-        statements.add("CREATE TABLE " + twoPartString[0] + "(");
+
+        String[] attributesRaw = twoPartString[1].split(",");
+        String tableName = twoPartString[0];
+
+        String attributesReadyForTable = "";
+        for (String attribute : attributesRaw
+        ) {
+            if(attribute.contains("PK#")) {
+                attribute = handleManyToMany(attribute);
+                attributesReadyForTable += attribute;
+                continue;
+            }
+            if(attribute.contains("PK")) {
+                attribute = handlePrimaryKeyFrom(attribute);
+                attributesReadyForTable += attribute;
+                continue;
+            }
+            if(attribute.contains("#")) {
+                attribute = handleForeignKeyFrom(attribute);
+                attributesReadyForTable += attribute;
+                continue;
+            }
+            attribute = handleAttribute(attribute);
+            attributesReadyForTable += attribute;
+
+        }
+        String createTableStatements = "CREATE TABLE " + tableName + "( " + removeLastChar(attributesReadyForTable) +");";
+        return createTableStatements;
+    }
+
+    private String handleAttribute(String attribute) {
+        return attribute + " TEXT, ";
+    }
+
+    private String handleForeignKeyFrom(String attribute) {
+        attribute = attribute.replace("#", "");
+        return attribute + " INT, FOREIGN KEY('" + attribute + "'), ";
+    }
+
+    private String handlePrimaryKeyFrom(String attribute ) {
+        attribute = attribute.replace("PK", "");
+
+        return attribute + " INT NOT NULL AUTO_INCREMENT, PRIMARY KEY('" + attribute + "'), ";
+    }
+    private String handleManyToMany(String attribute ) {
+        attribute = attribute.replace("PK#", "");
+
+        return attribute + " INT NOT NULL, PRIMARY KEY('" + attribute + "'), FOREIGN KEY('" + attribute + "'), ";
+    }
+    private String sanitize(String string ) {
+        return string.replace(" ", "").replace("\r", "").replace(")", "");
+    }
+    private String removeLastChar(String string) {
+        int size = string.length();
+        return string.substring(0, size -2);
     }
 }
