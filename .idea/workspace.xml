@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="65725d5f-8c6f-4c58-9426-87920df46365" name="Changes" comment="implement string transformation to SQL Syntax">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DatabaseCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DatabaseCreation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664454862475</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="implement string transformation to SQL Syntax">
+      <created>1664460744486</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664460744486</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
