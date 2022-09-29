@@ -4,45 +4,30 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 public class DatabaseCreation {
-    public static void main(String[] args) {
-        new DatabaseCreation();
+    public static void main(LinkedList<String> statementList) {
+        new DatabaseCreation(statementList);
     }
-    private final String databaseName = "Javatest";
 
-    private final String useQuery = "USE " + databaseName;
-
-    public DatabaseCreation() {
-        createStructure();
+    public DatabaseCreation(LinkedList<String> statementList) {
+        createBatchQuery(statementList);
     }
 
 
 
-    private void createStructure() throws RuntimeException {
-
-            String query0 = "CREATE DATABASE IF NOT EXISTS `" + databaseName + "`";
-
-            String query1 = "USE `" + databaseName + "`";
-
-            String query2 = "SET SQL_MODE='NO_AUTO_VALUE_ON_ZERO'; ";
-
-            String query3 = "CREATE TABLE IF NOT EXISTS `Javatesttabelle` ("
-                    + "`id` INT NOT NULL AUTO_INCREMENT,"
-                    + "`eintrag` text NOT NULL DEFAULT '',"
-                    + " PRIMARY KEY (id))";
-
+    private void createBatchQuery(LinkedList<String> statementList) throws RuntimeException {
             Statement statement;
 
             try {
                 Connection dbConnection = createConnection();
                 statement = dbConnection.createStatement();
-                statement.executeQuery(useQuery);
                 dbConnection.setAutoCommit(false);
-                statement.addBatch(query0);
-                statement.addBatch(query1);
-                statement.addBatch(query2);
-                statement.addBatch(query3);
+                for (String line : statementList
+                     ) {
+                    statement.addBatch(line);
+                }
                 statement.executeBatch();
                 dbConnection.commit();
                 dbConnection.setAutoCommit(true);
