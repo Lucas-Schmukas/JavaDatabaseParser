@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65725d5f-8c6f-4c58-9426-87920df46365" name="Changes" comment="adjust imports">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="65725d5f-8c6f-4c58-9426-87920df46365" name="Changes" comment="adjust datatype handling&#10;&#10;* now attributes can also be INTs">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664462243580</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="adjust datatype handling&#10;&#10;* now attributes can also be INTs">
+      <created>1666767575842</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666767575842</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,6 +138,7 @@
     <MESSAGE value="next initial commit" />
     <MESSAGE value="implement string transformation to SQL Syntax" />
     <MESSAGE value="adjust imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjust imports" />
+    <MESSAGE value="adjust datatype handling&#10;&#10;* now attributes can also be INTs" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust datatype handling&#10;&#10;* now attributes can also be INTs" />
   </component>
 </project>

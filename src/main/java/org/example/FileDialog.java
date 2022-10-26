@@ -160,9 +160,12 @@ public class FileDialog extends JFrame {
 
     private String handleAttributeDataType(String attribute) {
         if(attribute.contains("anzahl")) {
-            return attribute + " INT, "
-;        }
-        return attribute + " TEXT, ";
+            return attribute + " INT, ";
+        }
+        if(attribute.contains("datum")) {
+            return attribute + " DATE, ";
+        }
+            return attribute + " TEXT, ";
     }
 
     private String handleForeignKeyFrom(String attribute) {
