@@ -150,7 +150,7 @@ public class FileDialog extends JFrame {
                 attributesReadyForTable += attribute;
                 continue;
             }
-            attribute = handleAttribute(attribute);
+            attribute = handleAttributeDataType(attribute);
             attributesReadyForTable += attribute;
 
         }
@@ -158,7 +158,10 @@ public class FileDialog extends JFrame {
         return createTableStatements;
     }
 
-    private String handleAttribute(String attribute) {
+    private String handleAttributeDataType(String attribute) {
+        if(attribute.contains("anzahl")) {
+            return attribute + " INT, "
+;        }
         return attribute + " TEXT, ";
     }
 

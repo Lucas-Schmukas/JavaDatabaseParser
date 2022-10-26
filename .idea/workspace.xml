@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65725d5f-8c6f-4c58-9426-87920df46365" name="Changes" comment="implement string transformation to SQL Syntax">
+    <list default="true" id="65725d5f-8c6f-4c58-9426-87920df46365" name="Changes" comment="adjust imports">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileDialog.java" afterDir="false" />
     </list>
@@ -32,14 +32,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/lbreiner/projects/JavaDatabaseParser&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/lbreiner/projects/JavaDatabaseParser",
+    "settings.editor.selected.configurable": "MavenSettings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -106,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664460744486</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="adjust imports">
+      <created>1664462243580</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664462243580</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,6 +131,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="next initial commit" />
     <MESSAGE value="implement string transformation to SQL Syntax" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement string transformation to SQL Syntax" />
+    <MESSAGE value="adjust imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust imports" />
   </component>
 </project>
